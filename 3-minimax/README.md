@@ -110,7 +110,8 @@ function minimax(node, maximizingPlayer) is
               node_stack := new_node_stack
             end if
         end for
-        return value,child
+        node_stack.push(node)
+        return value,node_stack
     else (* minimizing player *)
         value := +∞
         node_stack := null
@@ -121,12 +122,13 @@ function minimax(node, maximizingPlayer) is
               node_stack := new_node_stack
             end if
         end for
-        return value,child
+        node_stack.push(node)
+        return value,node_stack
     end if
 end function
 ```
 
 ```
 (* Initial call *)
-score, nodes = minimax(origin, depth, TRUE)
+score, node_stack = minimax(origin, depth, TRUE)
 ```
